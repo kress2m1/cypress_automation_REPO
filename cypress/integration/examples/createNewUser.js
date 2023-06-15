@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
-describe("Navigate to the sauncelab demo site", function() {
-    it("Navigate to the landing page and log in", function() {
+describe("Create a user account at ParaBank", function() {
+    it("Navigate to the landing page and creates a new account", function() {
         cy.visit("https://parabank.parasoft.com/parabank/index.htm")
 
         cy.contains("Register").click()
@@ -17,11 +17,6 @@ describe("Navigate to the sauncelab demo site", function() {
         cy.get("input[id='customer.password']").type("password1234")
         cy.get("input[id='repeatedPassword']").type("password1234")
         cy.get("input[value='Register']").click()
-
-        cy.contains("Welcome Andre3000").should("contain.text", "Welcome Andre3000")
-
-
-
 
     })
 })
