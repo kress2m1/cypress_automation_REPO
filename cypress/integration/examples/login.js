@@ -4,11 +4,13 @@ describe("Create a user account at ParaBank", function() {
     it("Navigate to the landing page and creates a new account", function() {
         cy.visit("https://parabank.parasoft.com/parabank/index.htm")
 
-        cy.get("input[name='username']").type("Andre3000")
-        cy.get("input[name='password']").type("password1234")
+        cy.readFile("cypress\\fixtures\\newUserDetails.json").then((newUserDetails) => {
+
+        cy.get("input[name='username']").type(newUserDetails.userName)
+        cy.get("input[name='password']").type(newUserDetails.password)
         cy.get("input[value='Log In']").click()
       
-        cy.contains("Andre Dada").should("contain.text", "Andre Dada")
-
+        cy.contains(newUserDetails.displayName).should("contain.text", newUserDetails.displayName)
+        })
     })
 })

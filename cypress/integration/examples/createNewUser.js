@@ -2,21 +2,24 @@
 
 describe("Create a user account at ParaBank", function() {
     it("Navigate to the landing page and creates a new account", function() {
+
         cy.visit("https://parabank.parasoft.com/parabank/index.htm")
 
-        cy.contains("Register").click()
-        cy.get("input[id='customer.firstName']").type("Andre")
-        cy.get("input[id='customer.lastName']").type("Dada")
-        cy.get("input[id='customer.address.street']").type("1 Somewhere Street")
-        cy.get("input[id='customer.address.city']").type("London")
-        cy.get("input[id='customer.address.state']").type("Chelsea")
-        cy.get("input[id='customer.address.zipCode']").type("12345")
-        cy.get("input[id='customer.phoneNumber']").type("012345678910")
-        cy.get("input[id='customer.ssn']").type("145-25-4578")
-        cy.get("input[id='customer.username']").type("Andre3000")
-        cy.get("input[id='customer.password']").type("password1234")
-        cy.get("input[id='repeatedPassword']").type("password1234")
-        cy.get("input[value='Register']").click()
+        cy.readFile("cypress\\fixtures\\newUserDetails.json").then((newUserDetails) => {
 
+            cy.contains("Register").click()
+            cy.get("input[id='customer.firstName']").type(newUserDetails.firstName)
+            cy.get("input[id='customer.lastName']").type(newUserDetails.surname)
+            cy.get("input[id='customer.address.street']").type(newUserDetails.street)
+            cy.get("input[id='customer.address.city']").type(newUserDetails.city)
+            cy.get("input[id='customer.address.state']").type(newUserDetails.state)
+            cy.get("input[id='customer.address.zipCode']").type(newUserDetails.zipCode)
+            cy.get("input[id='customer.phoneNumber']").type(newUserDetails.phoneNumber)
+            cy.get("input[id='customer.ssn']").type(newUserDetails.ssn)
+            cy.get("input[id='customer.username']").type(newUserDetails.userName)
+            cy.get("input[id='customer.password']").type(newUserDetails.password)
+            cy.get("input[id='repeatedPassword']").type(newUserDetails.confirmPassword)
+            cy.get("input[value='Register']").click()
+        })
     })
 })
