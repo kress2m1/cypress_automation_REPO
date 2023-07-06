@@ -11,7 +11,22 @@
 //
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
-//
+
+Cypress.Commands.add('login', (email, password) => { 
+    cy.get("#Email").type(email)
+
+    cy.get("#Password").type(password)
+})
+
+
+Cypress.Commands.add('SelectProductAndAddToCart', (SelectProductAndAddToCart) => {
+    cy.get("h2[class='product-title']").each(($el, index, $list) => {
+        if($el.text().includes(SelectProductAndAddToCart)) {
+            cy.get("button[class='button-2 product-box-add-to-cart-button']").eq(index).click()
+        }
+    })  
+})
+
 //
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
