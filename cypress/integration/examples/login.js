@@ -1,16 +1,26 @@
 /// <reference types="cypress" />
 
-describe("Create a user account at ParaBank", function() {
-    it("Navigate to the landing page and creates a new account", function() {
-        cy.visit("https://parabank.parasoft.com/parabank/index.htm")
+describe("test", function() {
 
-        cy.readFile("cypress\\fixtures\\newUserDetails.json").then((newUserDetails) => {
-
-        cy.get("input[name='username']").type(newUserDetails.userName)
-        cy.get("input[name='password']").type(newUserDetails.password)
-        cy.get("input[value='Log In']").click()
-      
-        cy.contains(newUserDetails.displayName).should("contain.text", newUserDetails.displayName)
+    before(function() {
+        cy.fixture("newUserDetails").then(function(data){
+            this.data=data
         })
+    })
+
+    it("Navigate to the landing page and creates a new account", function() {
+        cy.visit("https://demo.nopcommerce.com/")
+
+        //cy.contains("Log in").click()
+        cy.get("a[class='ico-login']").click()
+        cy.get("#Email").type(this.data.email)
+
+        cy.get("#Password").type(this.data.password)
+
+        cy.get("button[class='button-1 login-button']").click()
+
+        cy.get("button[type='submit']").should("have.attr", "class", "button-1 search-box-button")
+
+        cy.get("h2").should("have.class", "product-title")
     })
 })
