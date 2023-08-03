@@ -13,6 +13,11 @@ async function setupNodeEvents(on, config) {
 };
 
 module.exports = defineConfig({
+  env: {
+		qaURL: "https://demo.nopcommerce.com/",
+		devURL: "https://dev-demo.nopcommerce.com/",
+		stagingURL: "https://staging-demo.nopcommerce.com/"
+	},
   e2e: {
     setupNodeEvents,
     specPattern: 'cypress/integration/examples/BDD/*.feature',
