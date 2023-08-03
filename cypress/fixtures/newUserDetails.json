@@ -1,0 +1,20 @@
+{
+    "firstName": "Andre",
+    "surname": "Wale",
+    "street": "1 Somewhere Street",
+    "city": "Leeds",
+    "state": "Yorshire",
+    "email": "kress2m1@gmail.com",
+    "company": "Software Company",
+    "zipCode": "23654",
+    "phoneNumber": "02145786352",
+    "ssn": "145-25-4555",
+    "userName": "Wale2000",
+    "password": "password1452",
+    "confirmPassword": "password1452",
+    "displayName": "Andre Wale",
+    "hrEmail": "wale@hotmail.com",
+    "hrPassword": "password5698",
+    "desktopStorm": "Digital Storm",
+    "downloads": ["song 1", "song 2"]
+}
